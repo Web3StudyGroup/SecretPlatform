@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "WebFetch(domain:docs.openzeppelin.com)",
+      "Bash(find:*)",
+      "Bash(pnpm install:*)",
+      "Bash(ls:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm add:*)",
+      "Bash(rm:*)",
+      "Bash(npx hardhat compile:*)",
+      "Bash(mv:*)",
+      "Bash(npm install)",
+      "Bash(npm run compile:*)",
+      "Bash(npx hardhat clean:*)"
+    ],
+    "deny": []
+  }
+}

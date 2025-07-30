@@ -24,9 +24,11 @@
     "hardhat"
   ],
   "dependencies": {
-    "encrypted-types": "^0.0.4",
     "@fhevm/solidity": "^0.7.0",
-    "@zama-fhe/oracle-solidity": "^0.1.0"
+    "@openzeppelin/confidential-contracts": "^0.2.0-rc.1",
+    "@openzeppelin/contracts": "^5.4.0",
+    "@zama-fhe/oracle-solidity": "^0.1.0",
+    "encrypted-types": "^0.0.4"
   },
   "devDependencies": {
     "@fhevm/hardhat-plugin": "^0.0.1-6",
@@ -78,7 +80,16 @@
     "test": "hardhat test",
     "test:sepolia": "hardhat test --network sepolia",
     "build:ts": "tsc --project tsconfig.json",
-    "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain"
+    "typechain": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat typechain",
+    "deploy:full": "hardhat deploy --tags MockUSDT,cUSDT,SecretPlatform",
+    "deploy:sepolia": "hardhat deploy --network sepolia --tags cUSDT,SecretPlatform",
+    "deploy:localhost": "hardhat deploy --network localhost --tags MockUSDT,cUSDT,SecretPlatform",
+    "task:deploy": "hardhat deploy-secret-platform",
+    "task:demo": "hardhat demo",
+    "task:quick": "hardhat quick-deploy",
+    "task:info": "hardhat info --address",
+    "start:node": "hardhat node",
+    "dev": "hardhat node & sleep 5 && npm run task:deploy"
   },
   "overrides": {
     "ws@>=7.0.0 <7.5.10": ">=7.5.10",

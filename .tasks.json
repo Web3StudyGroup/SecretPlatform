@@ -1,0 +1,142 @@
+{
+  "description": "SecretPlatform Hardhat Tasks Configuration",
+  "version": "1.0.0",
+  "tasks": {
+    "deployment": {
+      "deploy-secret-platform": {
+        "description": "Deploy complete SecretPlatform system",
+        "parameters": {
+          "usdt": "Optional USDT token address"
+        },
+        "example": "npx hardhat deploy-secret-platform --usdt 0x..."
+      },
+      "quick-deploy": {
+        "description": "Quick deploy for testing",
+        "parameters": {},
+        "example": "npx hardhat quick-deploy"
+      }
+    },
+    "token-operations": {
+      "wrap-usdt": {
+        "description": "Wrap USDT tokens to cUSDT",
+        "parameters": {
+          "cusdt": "Required cUSDT contract address",
+          "amount": "Required amount to wrap",
+          "to": "Optional recipient address"
+        },
+        "example": "npx hardhat wrap-usdt --cusdt 0x... --amount 100"
+      }
+    },
+    "platform-operations": {
+      "approve-platform": {
+        "description": "Approve platform as operator",
+        "parameters": {
+          "platform": "Required platform address",
+          "duration": "Optional duration in seconds (default: 1 year)"
+        },
+        "example": "npx hardhat approve-platform --platform 0x..."
+      },
+      "deposit": {
+        "description": "Deposit cUSDT to platform",
+        "parameters": {
+          "platform": "Required platform address",
+          "amount": "Required amount to deposit"
+        },
+        "example": "npx hardhat deposit --platform 0x... --amount 50"
+      },
+      "secret-transfer": {
+        "description": "Create encrypted transfer",
+        "parameters": {
+          "platform": "Required platform address",
+          "to": "Required recipient address",
+          "amount": "Required amount to transfer"
+        },
+        "example": "npx hardhat secret-transfer --platform 0x... --to 0x... --amount 25"
+      },
+      "claim": {
+        "description": "Claim a transfer",
+        "parameters": {
+          "platform": "Required platform address",
+          "from": "Required sender address"
+        },
+        "example": "npx hardhat claim --platform 0x... --from 0x..."
+      },
+      "withdraw": {
+        "description": "Withdraw from platform",
+        "parameters": {
+          "platform": "Required platform address",
+          "amount": "Required amount to withdraw"
+        },
+        "example": "npx hardhat withdraw --platform 0x... --amount 30"
+      }
+    },
+    "utilities": {
+      "info": {
+        "description": "Show contract information",
+        "parameters": {
+          "address": "Required contract address"
+        },
+        "example": "npx hardhat info --address 0x..."
+      },
+      "balance": {
+        "description": "Get platform balance",
+        "parameters": {
+          "platform": "Required platform address",
+          "user": "Optional user address"
+        },
+        "example": "npx hardhat balance --platform 0x..."
+      },
+      "balances": {
+        "description": "Show all balances",
+        "parameters": {
+          "user": "Required user address",
+          "usdt": "Required USDT address",
+          "cusdt": "Required cUSDT address",
+          "platform": "Required platform address"
+        },
+        "example": "npx hardhat balances --user 0x... --usdt 0x... --cusdt 0x... --platform 0x..."
+      }
+    },
+    "development": {
+      "setup-test": {
+        "description": "Setup test environment",
+        "parameters": {
+          "usdt": "Required USDT address",
+          "cusdt": "Required cUSDT address",
+          "platform": "Required platform address"
+        },
+        "example": "npx hardhat setup-test --usdt 0x... --cusdt 0x... --platform 0x..."
+      },
+      "demo": {
+        "description": "Run complete demo",
+        "parameters": {
+          "users": "Optional number of users (default: 2)"
+        },
+        "example": "npx hardhat demo --users 3"
+      }
+    }
+  },
+  "workflows": {
+    "complete-workflow": [
+      "1. Deploy: npx hardhat deploy-secret-platform",
+      "2. Wrap: npx hardhat wrap-usdt --cusdt <address> --amount 500",
+      "3. Approve: npx hardhat approve-platform --platform <address>",
+      "4. Deposit: npx hardhat deposit --platform <address> --amount 200",
+      "5. Transfer: npx hardhat secret-transfer --platform <address> --to <address> --amount 50",
+      "6. Claim: npx hardhat claim --platform <address> --from <address>",
+      "7. Withdraw: npx hardhat withdraw --platform <address> --amount 100"
+    ],
+    "quick-test": [
+      "1. Quick Deploy: npx hardhat quick-deploy",
+      "2. Setup Test: npx hardhat setup-test --usdt <address> --cusdt <address> --platform <address>",
+      "3. Run Demo: npx hardhat demo"
+    ]
+  },
+  "npm-scripts": {
+    "npm run task:deploy": "Deploy complete system",
+    "npm run task:demo": "Run complete demo",
+    "npm run task:quick": "Quick deploy for testing",
+    "npm run dev": "Start node and deploy system",
+    "npm run start:node": "Start Hardhat node"
+  }
+}
